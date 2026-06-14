@@ -100,7 +100,7 @@ Real where known; **illustrative/placeholder where marked `‡` — confirm with
 
 **Identity**
 - Cinéma Saint-Denis — cinéma associatif (loi 1901), géré par des bénévoles.
-- Croix-Rousse, Lyon. « Depuis 1921 »‡ (≈ 100 ans — confirm exact year).
+- Croix-Rousse, Lyon. « Depuis 1920 »‡ (≈ 100 ans — confirm exact year).
 - Tagline kept: « Convivial et accueillant — des tarifs pour toutes les bourses ».
 
 **Programme — semaine du 11 au 17 juin 2026** (4 real titles; showtimes ‡)
