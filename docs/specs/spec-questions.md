@@ -61,7 +61,7 @@ _Recommended default:_ review-before-publish, at least for social.
 
 > **Réponse :**
 
-It can be fully automatic
+A preview should be generated and approved before publish.
 
 **A5. What is "a skill", and who runs it?**
 A Claude skill a volunteer runs each month (drop doc → run → review → publish),
@@ -125,8 +125,7 @@ Cancellations / time changes: re-run the whole doc, or edit in place?
 
 > **Réponse :**
 
-(Not answerable from the doc — process question for the volunteers. Likely: re-run
-a corrected monthly doc, with a quick path for one-off fixes between issues.)
+This is not a concern.
 
 ---
 
@@ -149,13 +148,14 @@ links) — VO or VF preferred?
 
 > **Réponse :**
 
-(Doc has no images, so all visuals come from TMDB. Suggested: French poster +
-backdrop + trailer — please confirm trailer preference, VO vs VF.)
+Doc has no images, so all visuals come from TMDB. Pull the posters to use on the website and the backdrop images and trailer links to use elsewhere.
 
 **C3. Any concern about image rights?**
 TMDB posters are generally fine for editorial/promo use — please confirm you're comfortable.
 
 > **Réponse :**
+
+This is not a concern.
 
 ---
 
@@ -167,16 +167,22 @@ _Recommended default:_ yes, ICS feed(s). Confirm vs. a specific Google Calendar.
 
 > **Réponse :**
 
+it should be a google calendar which people can subscribe to
+
 **D2. One calendar or several?**
 e.g. main programme + ciné-club + jeune public as separate subscribable feeds.
 
 > **Réponse :**
+
+We only need one calendar
 
 **D3. Event granularity?**
 _Recommended default:_ one event per individual screening (film + date + time +
 version + booking link). Agreed?
 
 > **Réponse :**
+
+One event per screening
 
 ---
 
@@ -187,6 +193,8 @@ You have a Facebook page — also Instagram? X / Mastodon? A newsletter?
 
 > **Réponse :**
 
+Facebook & a brevo newsletter
+
 **E2. Posting model — reality check.**
 Facebook/Instagram via the Meta Graph API needs a Business app, expiring page
 tokens and app review (non-trivial to set up and maintain). Alternatives:
@@ -195,11 +203,15 @@ tokens and app review (non-trivial to set up and maintain). Alternatives:
 
 > **Réponse :**
 
+We have a business account for the cinema. But the skill should generate content that can be copied and pasted
+
 **E3. Cadence & content?**
 One post per new film, a weekly "what's on" roundup, or both? Poster + blurb +
 showtimes + booking link + trailer? Reuse the doc's blurb as caption, or generate one?
 
 > **Réponse :**
+
+One post per film
 
 ---
 
@@ -210,11 +222,13 @@ _Assumption:_ as close to free as possible → favours static hosting + a schedu
 
 > **Réponse :**
 
-I was thinking of keeping a repo on github and hosting on Cloudflare
+Repo on github and hosting on Cloudflare
 
 **F2. Who owns / can grant access** to the domain, hosting, TMDB account and social accounts?
 
 > **Réponse :**
+
+Audrey will own it in an account named for the cinema
 
 **F3. Who maintains this long-term?**
 Volunteer turnover means it must be low-maintenance and well-documented
@@ -224,11 +238,15 @@ Volunteer turnover means it must be low-maintenance and well-documented
 
 Part of the spec should be to document how to run the skill from claude code online.
 
+The plan is for Audrey to run this.
+
 **F4. Priorities / MVP & any deadline?**
 _Recommended sequencing:_ (1) new site + programme-from-doc → (2) calendar feed
 → (3) social. Does that order match yours?
 
 > **Réponse :**
+
+Sounds good
 
 ---
 
@@ -238,9 +256,13 @@ _Recommended sequencing:_ (1) new site + programme-from-doc → (2) calendar fee
 
 > **Réponse :**
 
+https://www.ticketingcine.com/?EMS1065#home
+
 **G2. Who updates the ticketing system?**
 
 > **Réponse :**
+
+It's done manually by another volunteer. If the system is looking for deeplinks on ticketingcine but can't find them it can just link to the root.
 
 **G3. Does the system have a link to Allo Ciné? **
 
