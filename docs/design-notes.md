@@ -177,7 +177,8 @@ Preview gallery: `designs/index.html`.
 ## 8. Technical / future notes (from `technical-requirements.md`)
 
 Out of scope for these mockups, but the design should anticipate:
-- A weekly **Word document** of film blurbs → parsed to update the site.
+- A **monthly** Word document of film blurbs → parsed to update the site (the
+  homepage then shows the current week).
 - Auto-fetch posters/stills from **TMDB / AlloCiné** (mockups use designed
   placeholders where posters will go).
 - Publish a **subscribable calendar** (the showtime grid maps to this).

@@ -26,7 +26,7 @@ Early planning and design exploration.
 Hugo (static output with a structured content layer) · source on **GitHub** ·
 build + host on **Cloudflare Pages**, with **R2** for posters and **Workers/Cron**
 for the dynamic glue (forms, daily rebuild, calendar). A **Claude skill** parses
-the weekly programme document, fetches posters/trailers (TMDB), updates the site,
+the monthly programme document, fetches posters/trailers (TMDB), updates the site,
 generates a subscribable calendar, and posts to social.
 
 ## Preview the mockups

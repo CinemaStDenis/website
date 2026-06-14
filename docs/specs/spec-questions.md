@@ -1,16 +1,16 @@
 # Spec questions — automation pipeline
 
-> Open questions to resolve before writing the detailed spec for the weekly
-> automation described in `technical-requirements.md` (parse the weekly Word doc
+> Open questions to resolve before writing the detailed spec for the programme
+> automation described in `technical-requirements.md` (parse the monthly Word doc
 > → update the website → fetch images/trailers → publish a subscribable calendar
 > → post to social media).
 >
 > **How to use:** answer inline under each `Réponse :` line. Where a
 > **Recommended default** is given, you can often just reply "ok" / "confirmed"
 > or correct it. The single most useful thing you can attach is **one real
-> example of the weekly Word document** — it answers much of section B on its own.
+> example of the monthly Word document** — it answers much of section B on its own.
 
-_Created: 2026-06-14 · Status: awaiting answers_
+_Created: 2026-06-14 · Updated: 2026-06-14 · Status: in progress — sample doc received; section B + A2 answered from it_
 
 ---
 
@@ -38,6 +38,14 @@ This is the crux — site, calendar and social all derive from the schedule.
 
 > **Réponse :**
 
+The Word doc contains the **full schedule**. Each film block has a showtimes line
+with date + time per screening, e.g. "Je 11/6 (20h30), Ve 12/6 (14h30), Sa 13/6
+(20h30), Di 14/6 (17h)". So site, calendar and social can all be derived from the
+doc — no separate showtimes source needed (ticketingcine stays the booking
+target). Parser notes: French day abbreviations (Je/Ve/Sa/Di/Lu/Ma/Me) and mixed
+time formats (`20h30`, bare `17`) need normalising; a film's screenings can span
+several weeks of the month.
+
 **A3. Do you sell tickets online today, and through what?**
 (Mapado, BilletWeb, Ciné Office, etc.) The "Réserver" button needs a target,
 and that system may be the real source of truth for screenings.
@@ -56,20 +64,25 @@ _Recommended default:_ review-before-publish, at least for social.
 It can be fully automatic
 
 **A5. What is "a skill", and who runs it?**
-A Claude skill a volunteer runs each week (drop doc → run → review → publish),
+A Claude skill a volunteer runs each month (drop doc → run → review → publish),
 or a scheduled server job with no human? And how technical are the operators?
 
 > **Réponse :**
 
 ## A claude skill, run by one of the volunteers.
 
-## B. The weekly Word document (the input)
+## B. The monthly Word document (the input)
 
 **B1. Is the format fixed, or can we define the template?**
 A consistent template (or shared Google Sheet/Form) makes parsing far more
-robust than free-form Word. Who produces it, and is the structure stable week to week?
+robust than free-form Word. Who produces it, and is the structure stable month to month?
 
 > **Réponse :**
+
+Free-form Word (`.docm`, the "version imprimeur" / print layout), issued monthly.
+Not a rigid template, but the per-film structure is consistent and parseable —
+see the real sample at `docs/samples/`. Worth confirming who produces it and
+whether we can lightly standardise it to make parsing more robust.
 
 **B2. What fields does it contain per film?**
 Title, director, country, duration, version (VF/VOST), synopsis, showtimes?
@@ -77,21 +90,43 @@ Tables or prose? `.docx`? Any embedded images?
 
 > **Réponse :**
 
+Prose, no tables. Per film: TITLE (caps) · `de DIRECTOR` · `(country / year /
+duration / VO if subtitled)` · `Avec CAST` · a showtimes line · synopsis · one or
+more press quotes with the source in parentheses. Format is `.docm`. **No embedded
+images** — every poster/still must come from TMDB. Some films carry a one-line
+banner above the title (e.g. "Nouvelle et dernière séance", "Un grand classique
+du rire").
+
 **B3. How are films identified for matching to TMDB/AlloCiné?**
 French title only, or also original title / year / director? Title-only matching
 is error-prone (remakes, common titles); one disambiguating field per film helps a lot.
 
 > **Réponse :**
 
+The doc gives French title + director + country + year + duration for every film.
+Director + year are strong disambiguators — match on title, then verify against
+director/year/runtime to avoid remakes and common-title collisions.
+
 **B4. Does the same doc cover special programming?**
 Ciné-club, jeune public, séances scolaires, Q&As, festivals — same doc or separate?
 
 > **Réponse :**
 
+Yes — same doc. The sample mixes in: an outdoor "Ciné Rencontre du mercredi"
+(surprise film + buvette), "Fête du Cinéma" pricing days (28–30 June, 5€), a
+repertory classic (Tati, 1953, "avec présentation"), one-off "nouvelle/dernière
+séance" notes, and a summer-closure notice (réouverture 3 septembre). This matches
+the inbox note that Ciné classique / Ciné rencontre are highlighted in the doc —
+so the parser must handle non-film events and special pricing, not just standard
+screenings.
+
 **B5. How are mid-week changes handled?**
 Cancellations / time changes: re-run the whole doc, or edit in place?
 
 > **Réponse :**
+
+(Not answerable from the doc — process question for the volunteers. Likely: re-run
+a corrected monthly doc, with a quick path for one-off fixes between issues.)
 
 ---
 
@@ -104,11 +139,18 @@ _Recommended default:_ TMDB primary, manual override fallback; AlloCiné nice-to
 
 > **Réponse :**
 
+Confirmed — TMDB-first, with a manual-override fallback (AlloCiné nice-to-have
+only). Especially important now we know the doc carries **no images at all**:
+posters, backdrops and trailers all come from TMDB.
+
 **C2. What assets do you want pulled?**
 French poster only, or also backdrops/stills? Trailers (from TMDB's YouTube
 links) — VO or VF preferred?
 
 > **Réponse :**
+
+(Doc has no images, so all visuals come from TMDB. Suggested: French poster +
+backdrop + trailer — please confirm trailer preference, VO vs VF.)
 
 **C3. Any concern about image rights?**
 TMDB posters are generally fine for editorial/promo use — please confirm you're comfortable.
@@ -208,7 +250,9 @@ Yes, via the ticketing system
 
 ## Most valuable next input
 
-📎 **One real example of the weekly Word document.** It would resolve most of
+📎 **One real example of the monthly Word document.** It would resolve most of
 section B (and how parsing/matching must work) in one go.
 
-> **Attached / location :**
+> **Attached / location :** ✅ Received — `docs/samples/programme-juin-juillet-2026.docm`
+> (real monthly programme, juin–juillet 2026; plain-text extraction alongside as
+> `.txt`). Section B and A2 above are answered from it.
