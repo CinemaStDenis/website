@@ -10,15 +10,15 @@ _Last updated: 2026-06-14_
 
 ## ⚠️ Housekeeping / handover — don't forget
 
-- [ ] **Migrate this project off Lewis's personal GitHub account.**
-  The repo currently lives at **`lewis-smith/cinema-st-dennis`** (private, created
-  2026-06-14) on a personal account purely to get things moving. Once the project
-  progresses / before go-live, hand it over to the cinema and remove it from Lewis's account:
-  - [ ] Create the cinema's own GitHub organisation (or shared volunteer account).
-  - [ ] Transfer the repo to that owner (`gh repo transfer`, or Settings → Transfer ownership).
-  - [ ] Re-point the **Cloudflare Pages** Git connection, deploy hooks and tokens at the new owner.
+- [x] **Migrated off Lewis's personal GitHub account.**
+  The repo now lives at **`CinemaStDenis/website`** (the cinema's own org); it
+  started at `lewis-smith/cinema-st-dennis` purely to get things moving.
+  - [x] Create the cinema's own GitHub organisation (or shared volunteer account).
+  - [x] Move the code to the cinema's org (new repo `CinemaStDenis/website`; `origin` repointed and `main` pushed 2026-06-14).
+  - [ ] **Make the `CinemaStDenis/website` repo private.** ⚠️ Currently PUBLIC. Blocked: `lewis-smith` only has *write* access, not admin — an org owner must change visibility (repo Settings → General → Danger Zone), or grant `lewis-smith` admin so this can be automated.
+  - [ ] Re-point the **Cloudflare Pages** Git connection, deploy hooks and tokens at the new owner (when Cloudflare is set up).
   - [ ] Confirm the new owner controls the domain, TMDB key and social tokens too.
-  - [ ] Delete / archive the copy under `lewis-smith` once the transfer is verified.
+  - [ ] Archive / delete the old `lewis-smith/cinema-st-dennis` copy once everything's verified.
 
 ---
 
