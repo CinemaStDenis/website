@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinéma Saint-Denis — Le cinéma indépendant de la Croix-Rousse</title>
+<meta name="description" content="Cinéma associatif et indépendant à la Croix-Rousse, Lyon. À l'affiche cette semaine, le bar des bénévoles, des tarifs pour toutes les bourses. Depuis 1921.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FBFAF7; --sand:#F1EDE5; --sand-2:#E9E4D9; --clay:#efe7dd;
+    --garnet:#9C0000; --garnet-deep:#7a0606;
+    --ink:#1C1A19; --soft:#6b645f; --hair:rgba(28,26,25,.14);
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.04;letter-spacing:.005em}
+  .eyebrow{font-family:var(--sans);font-weight:600;letter-spacing:.24em;text-transform:uppercase;font-size:.7rem;color:var(--garnet)}
+  .lede{font-family:var(--sans)}
+  .gline{width:54px;height:2px;background:var(--garnet);border:0;margin:0}
+
+  /* nav */
+  header.nav{border-bottom:1px solid var(--hair)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+  header.nav img.logo{height:40px}
+  .nav-links{display:flex;gap:34px;align-items:center;font-size:.86rem;letter-spacing:.05em;text-transform:uppercase;font-weight:500}
+  .nav-links a{color:var(--ink);opacity:.78;transition:.18s}
+  .nav-links a:hover{opacity:1;color:var(--garnet)}
+  .nav-links a.adh{border:1px solid var(--garnet);color:var(--garnet);padding:9px 18px;border-radius:2px;opacity:1}
+  .nav-links a.adh:hover{background:var(--garnet);color:#fff}
+
+  /* hero */
+  .hero{position:relative;padding:0;overflow:hidden;border-bottom:1px solid var(--hair)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:560px}
+  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:80px 64px 80px 0}
+  .hero-text .eyebrow{margin-bottom:26px}
+  .hero h1{font-size:clamp(3rem,6vw,5.4rem);line-height:.98}
+  .hero h1 em{font-style:italic;color:var(--garnet)}
+  .hero p.sub{font-size:1.12rem;color:var(--soft);max-width:44ch;margin:28px 0 0;line-height:1.7}
+  .hero .links{display:flex;gap:26px;margin-top:40px;flex-wrap:wrap;align-items:center}
+  .arrowlink{font-weight:600;letter-spacing:.04em;font-size:.82rem;text-transform:uppercase;border-bottom:2px solid var(--garnet);padding-bottom:6px;transition:.18s}
+  .arrowlink:hover{color:var(--garnet)}
+  .hero-visual{position:relative;background:
+    linear-gradient(180deg, rgba(122,6,6,.0), rgba(122,6,6,.18)),
+    linear-gradient(135deg,#b5341f 0%, #9C0000 42%, #5e0a0a 100%)}
+  .hero-visual .perf{position:absolute;top:0;bottom:0;width:26px;background:
+    repeating-linear-gradient(180deg, transparent 0 16px, rgba(251,250,247,.92) 16px 30px);opacity:.5}
+  .hero-visual .perf.l{left:0} .hero-visual .perf.r{right:0}
+  .hero-visual .quote{position:absolute;inset:auto 48px 48px;color:#fbeede}
+  .hero-visual .quote .q{font-family:var(--serif);font-style:italic;font-size:1.7rem;line-height:1.25}
+  .hero-visual .quote .c{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-top:14px;opacity:.85}
+  .hero-visual .estd{position:absolute;top:40px;left:48px;font-family:var(--serif);font-size:1.1rem;color:rgba(251,238,222,.85);letter-spacing:.06em}
+
+  /* section scaffolding */
+  section.block{padding:96px 0}
+  .head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:46px}
+  .head-row h2{font-size:clamp(2.4rem,4.5vw,3.4rem)}
+  .head-row .eyebrow{display:block;margin-bottom:14px}
+  .seeall{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--soft);border-bottom:1px solid var(--hair);padding-bottom:5px}
+  .seeall:hover{color:var(--garnet);border-color:var(--garnet)}
+
+  /* à l'affiche grid */
+  .films{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+  .card .poster{aspect-ratio:2/3;border-radius:3px;position:relative;overflow:hidden;border:1px solid var(--hair);
+    display:flex;align-items:flex-end;padding:18px;color:#fff;transition:.3s}
+  .card .poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.4));pointer-events:none}
+  .card:hover .poster{transform:translateY(-4px);box-shadow:0 18px 36px rgba(40,10,10,.16)}
+  .poster .pt{position:relative;z-index:1;font-family:var(--serif);font-size:1.5rem;line-height:1.05;font-weight:500}
+  .poster.q1{background:linear-gradient(155deg,#a8423a,#7a1f1a)}
+  .poster.q2{background:linear-gradient(155deg,#3c5a63,#1d3640)}
+  .poster.q3{background:linear-gradient(155deg,#9b7a3a,#6a4a12)}
+  .poster.q4{background:linear-gradient(155deg,#6a3a52,#3a2233)}
+  .card .info{padding:18px 2px 0}
+  .card .vo{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--garnet);font-weight:600}
+  .card h3{font-size:1.5rem;margin:7px 0 4px}
+  .card .meta{font-size:.86rem;color:var(--soft);font-style:italic;font-family:var(--serif)}
+  .card .times{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .card .times a{font-size:.82rem;font-weight:500;color:var(--ink);border:1px solid var(--hair);border-radius:2px;padding:5px 10px;transition:.16s}
+  .card .times a:hover{border-color:var(--garnet);color:var(--garnet)}
+
+  /* prochainement strip */
+  .soon{margin-top:64px;padding-top:40px;border-top:1px solid var(--hair)}
+  .soon .row{display:flex;gap:40px;flex-wrap:wrap;align-items:baseline}
+  .soon .lab{font-family:var(--serif);font-size:1.4rem;color:var(--soft);font-style:italic;min-width:160px}
+  .soon ul{list-style:none;display:flex;gap:34px;flex-wrap:wrap;margin:0;padding:0}
+  .soon li{font-family:var(--serif);font-size:1.45rem}
+  .soon li span{display:block;font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--garnet);font-weight:600}
+
+  /* le salon feature */
+  .salon{background:var(--sand)}
+  .salon-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0}
+  .salon-visual{align-self:stretch;min-height:460px;background:
+    linear-gradient(140deg,#7a0606,#9C0000 60%,#b5341f);position:relative}
+  .salon-visual .ring{position:absolute;inset:0;background:
+    radial-gradient(closest-side at 30% 30%, rgba(255,255,255,.12), transparent 70%),
+    radial-gradient(closest-side at 75% 70%, rgba(255,255,255,.08), transparent 70%)}
+  .salon-visual .label{position:absolute;left:44px;bottom:40px;color:#fbeede}
+  .salon-visual .label b{font-family:var(--serif);font-size:2.1rem;font-weight:500;display:block}
+  .salon-text{padding:80px 64px}
+  .salon-text h2{font-size:clamp(2.2rem,4vw,3rem);margin:14px 0 18px}
+  .salon-text p{color:var(--soft);margin:0 0 16px}
+  .salon-text .feat{display:flex;gap:30px;margin-top:28px;flex-wrap:wrap}
+  .salon-text .feat div b{font-family:var(--serif);font-size:1.9rem;color:var(--garnet);display:block;line-height:1}
+  .salon-text .feat div span{font-size:.82rem;color:var(--soft)}
+
+  /* infos pratiques */
+  .infos-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .map{aspect-ratio:16/11;border-radius:4px;border:1px solid var(--hair);background:
+    repeating-linear-gradient(45deg, var(--sand) 0 18px, var(--sand-2) 18px 36px);position:relative;overflow:hidden}
+  .map .pin{position:absolute;left:50%;top:48%;transform:translate(-50%,-100%);color:var(--garnet)}
+  .map .pin svg{width:42px;height:42px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+  .map .addr{position:absolute;left:18px;bottom:16px;background:var(--ivory);border:1px solid var(--hair);
+    padding:12px 16px;border-radius:3px;font-size:.9rem;line-height:1.4}
+  .map .addr b{font-family:var(--serif);font-size:1.05rem}
+  dl.facts{margin:0}
+  dl.facts > div{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--hair)}
+  dl.facts > div:first-child{border-top:0;padding-top:0}
+  dl.facts dt{font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--garnet)}
+  dl.facts dd{margin:0;color:var(--soft)}
+  dl.facts dd b{color:var(--ink)}
+  .tarif-line{display:flex;justify-content:space-between;border-bottom:1px dotted var(--hair);padding:5px 0}
+  .tarif-line b{color:var(--ink)}
+
+  /* newsletter / adhésion */
+  .join{background:var(--ink);color:var(--ivory);text-align:center;padding:92px 0}
+  .join h2{font-size:clamp(2.2rem,4.5vw,3.2rem);color:var(--ivory)}
+  .join h2 em{font-style:italic;color:#e9a39a}
+  .join p{color:#c9c2bc;max-width:520px;margin:18px auto 30px}
+  .join form{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .join input{flex:1;min-width:230px;padding:14px 18px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;border-radius:2px;font-family:var(--sans);font-size:1rem}
+  .join input::placeholder{color:#9a938d}
+  .btn-garnet{background:var(--garnet);color:#fff;border:0;padding:14px 28px;border-radius:2px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.82rem;cursor:pointer;font-family:var(--sans);transition:.18s}
+  .btn-garnet:hover{background:#b71212}
+  .join .alt{margin-top:20px;font-size:.86rem}
+  .join .alt a{border-bottom:1px solid #e9a39a;color:#e9a39a}
+
+  /* footer */
+  footer{background:var(--ivory);padding:60px 0 34px;border-top:1px solid var(--hair)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+  footer img.flogo{height:42px;margin-bottom:16px}
+  footer h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--garnet);margin:0 0 14px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin:8px 0;color:var(--soft);font-size:.92rem}
+  footer a:hover{color:var(--garnet)}
+  .foot-base{margin-top:46px;padding-top:20px;border-top:1px solid var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:var(--soft);font-size:.8rem}
+
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-text{padding:64px 0}
+    .hero-visual{min-height:300px}
+    .films{grid-template-columns:1fr 1fr}
+    .salon-grid{grid-template-columns:1fr}
+    .salon-visual{min-height:280px}
+    .salon-text{padding:56px 32px}
+    .infos-grid{grid-template-columns:1fr;gap:44px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .nav-links{gap:18px;font-size:.74rem}
+    .nav-links a:not(.adh){display:none}
+    .films{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#"><img class="logo" src="assets/logo.png" alt="Cinéma Saint-Denis"></a>
+    <nav class="nav-links">
+      <a href="#affiche">À l'affiche</a>
+      <a href="#salon">Le salon</a>
+      <a href="#infos">Infos pratiques</a>
+      <a href="#infos">Tarifs</a>
+      <a href="#join" class="adh">Adhérer</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="wrap" style="padding-right:0">
+      <div class="hero-text">
+        <span class="eyebrow">Croix-Rousse · Lyon · depuis 1921</span>
+        <h1>Le cinéma<br>indépendant,<br><em>vivant et&nbsp;ouvert.</em></h1>
+        <p class="sub">Une salle de quartier centenaire, tenue par ses bénévoles. Des films choisis avec soin, un bar où l'on s'attarde, et des tarifs pour toutes les bourses.</p>
+        <div class="links">
+          <a href="#affiche" class="arrowlink">À l'affiche ↓</a>
+          <a href="#salon" class="arrowlink">Le salon ↓</a>
+          <a href="#infos" class="arrowlink">Nous trouver ↓</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="perf l"></div><div class="perf r"></div>
+      <div class="estd">Anno 1921</div>
+      <div class="quote">
+        <div class="q">« Garder vivant un cinéma exigeant, curieux&nbsp;— et accessible à tous. »</div>
+        <div class="c">Les bénévoles du Saint-Denis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="affiche">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Semaine du 11 au 17 juin 2026</span>
+        <h2>À l'affiche</h2>
+      </div>
+      <a href="#" class="seeall">Tout le programme →</a>
+    </div>
+
+    <div class="films">
+      <article class="card">
+        <div class="poster q1"><div class="pt">C'est quoi<br>l'amour&nbsp;?</div></div>
+        <div class="info">
+          <div class="vo">VF · Avant-première</div>
+          <h3>C'est quoi l'amour&nbsp;?</h3>
+          <div class="meta">France · 1h48 · Claire Vasseur</div>
+          <div class="times"><a href="#">Dim 17h30</a><a href="#">Mar 20h00</a><a href="#">Mer 18h00</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster q2"><div class="pt">Mon grand<br>frère et moi</div></div>
+        <div class="info">
+          <div class="vo">VOST</div>
+          <h3>Mon grand frère et moi</h3>
+          <div class="meta">Japon · 2h07 · Haruki Tanaka</div>
+          <div class="times"><a href="#">Ven 18h00</a><a href="#">Sam 21h00</a><a href="#">Lun 20h00</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster q3"><div class="pt">Vivaldi<br>et moi</div></div>
+        <div class="info">
+          <div class="vo">VOST</div>
+          <h3>Vivaldi et moi</h3>
+          <div class="meta">Italie · 1h50 · Lucia Bonfanti</div>
+          <div class="times"><a href="#">Jeu 18h00</a><a href="#">Dim 15h00</a><a href="#">Mar 18h00</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster q4"><div class="pt">Juste une<br>illusion</div></div>
+        <div class="info">
+          <div class="vo">VF · Thriller</div>
+          <h3>Juste une illusion</h3>
+          <div class="meta">France · 2h00 · Samuel Aron</div>
+          <div class="times"><a href="#">Ven 21h00</a><a href="#">Sam 18h30</a><a href="#">Dim 20h00</a></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="soon">
+      <div class="row">
+        <div class="lab">Prochainement</div>
+        <ul>
+          <li><span>Dès le 18 juin</span>La saison des pluies</li>
+          <li><span>Ciné-club · 16 juin</span>Murmures</li>
+          <li><span>Jeune public · 15 juin</span>Ciné-goûter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="salon" id="salon">
+  <div class="salon-grid">
+    <div class="salon-visual">
+      <div class="ring"></div>
+      <div class="label"><span class="eyebrow" style="color:#e9a39a">La vie du lieu</span><b>Le bar des bénévoles</b></div>
+    </div>
+    <div class="salon-text">
+      <span class="eyebrow">Plus qu'une salle</span>
+      <h2>On reste, on en parle.</h2>
+      <p>Avant la séance, après le générique : le bar associatif est le cœur du Saint-Denis. On y sert des vins de producteurs, des bières artisanales, des cafés et quelques douceurs — à prix doux, et tenus par les bénévoles qui font vivre le cinéma.</p>
+      <p>Chaque verre partagé soutient directement la programmation. C'est aussi là que naissent les ciné-clubs, les rencontres et les discussions qui se prolongent tard.</p>
+      <div class="feat">
+        <div><b>1921</b><span>Salle de quartier classée</span></div>
+        <div><b>100%</b><span>Géré par des bénévoles</span></div>
+        <div><b>5,50&nbsp;€</b><span>La séance du mardi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="infos" style="background:var(--ivory)">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="eyebrow">En pratique</span><h2>Nous trouver, et tout savoir</h2></div>
+    </div>
+    <div class="infos-grid">
+      <div>
+        <div class="map">
+          <div class="pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg></div>
+          <div class="addr"><b>Cinéma Saint-Denis</b><br>77 grande rue de la Croix-Rousse<br>69004 Lyon</div>
+        </div>
+        <dl class="facts" style="margin-top:28px">
+          <div><dt>Accès</dt><dd>Métro <b>C</b> — arrêt Croix-Rousse (3 min)<br>Bus C13 · C18 · S6 · Vélo'v à 50 m</dd></div>
+          <div><dt>Parking</dt><dd><b>Parking LPA Croix-Rousse</b>, place de la Croix-Rousse (5 min). Voirie gratuite le dimanche et après 19h. Quartier piéton — vélo conseillé.</dd></div>
+          <div><dt>Contact</dt><dd><b>04 78 39 81 51</b><br>contact@cinema-saint-denis.fr</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h3 style="font-size:1.8rem;margin-bottom:8px">Tarifs</h3>
+        <p style="color:var(--soft);margin:0 0 18px;font-style:italic;font-family:var(--serif);font-size:1.15rem">« Des tarifs pour toutes les bourses. »</p>
+        <div class="tarif-line"><span>Plein tarif</span><b>7,50 €</b></div>
+        <div class="tarif-line"><span>Tarif réduit — étudiant·e, &gt;65 ans, demandeur d'emploi</span><b>6,00 €</b></div>
+        <div class="tarif-line"><span>Moins de 14 ans</span><b>4,50 €</b></div>
+        <div class="tarif-line"><span>Adhérent·e de l'association</span><b>5,50 €</b></div>
+        <div class="tarif-line"><span>Mardi — tarif unique pour tous</span><b>5,50 €</b></div>
+        <div class="tarif-line"><span>Carte 10 séances</span><b>55,00 €</b></div>
+        <div class="tarif-line"><span>Adhésion annuelle (soutien)</span><b>12,00 €</b></div>
+        <p style="margin-top:22px"><a href="#join" class="arrowlink">Adhérer &amp; soutenir le cinéma →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="join" id="join">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#e9a39a">Restons en lien</span>
+    <h2 style="margin-top:18px">Le programme, <em>chaque semaine.</em></h2>
+    <p>Recevez la sélection par e-mail, ou devenez adhérent·e pour faire vivre un cinéma libre, curieux et accessible.</p>
+    <form onsubmit="return false">
+      <input type="email" placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail">
+      <button class="btn-garnet" type="submit">Je m'inscris</button>
+    </form>
+    <div class="alt">ou <a href="#">adhérer à l'association (12 €/an)</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img class="flogo" src="assets/logo.png" alt="Cinéma Saint-Denis">
+        <p style="color:var(--soft);font-size:.92rem;max-width:280px">Cinéma associatif et indépendant de la Croix-Rousse. Association loi 1901, gérée par des bénévoles depuis 1921.</p>
+      </div>
+      <div>
+        <h4>Le cinéma</h4>
+        <ul>
+          <li><a href="#affiche">À l'affiche</a></li>
+          <li><a href="#">Prochainement</a></li>
+          <li><a href="#salon">Le salon</a></li>
+          <li><a href="#">Notre histoire</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pratique</h4>
+        <ul>
+          <li><a href="#infos">Tarifs</a></li>
+          <li><a href="#infos">Accès &amp; parking</a></li>
+          <li><a href="#">Séances scolaires</a></li>
+          <li><a href="#join">Devenir bénévole</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nous trouver</h4>
+        <ul>
+          <li>77 grande rue de la Croix-Rousse, 69004 Lyon</li>
+          <li><a href="tel:0478398151">04 78 39 81 51</a></li>
+          <li><a href="mailto:contact@cinema-saint-denis.fr">contact@cinema-saint-denis.fr</a></li>
+          <li><a href="https://facebook.com/CinemaSaintDenis">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Cinéma Saint-Denis · Association loi 1901</span>
+      <span>Maquette « Le Salon » · Proposition de refonte</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

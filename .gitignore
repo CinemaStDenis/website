@@ -1,0 +1,45 @@
+# ---------- macOS ----------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# ---------- Hugo (static site output & caches) ----------
+/public/
+/resources/_gen/
+.hugo_build.lock
+/hugo_stats.json
+
+# ---------- Node / front-end tooling (Tailwind, Pagefind, CMS, etc.) ----------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# ---------- Cloudflare (Wrangler: Workers / Pages Functions) ----------
+.wrangler/
+.dev.vars
+.dev.vars.*
+
+# ---------- Secrets / environment ----------
+.env
+.env.*
+!.env.example
+
+# ---------- Editors / IDEs ----------
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# ---------- Logs / temp ----------
+*.log
+.cache/
+tmp/

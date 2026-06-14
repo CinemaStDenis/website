@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinéma Saint-Denis — Séances &amp; réservation · Croix-Rousse, Lyon</title>
+<meta name="description" content="Toutes les séances de la semaine au Cinéma Saint-Denis, Croix-Rousse. Réservez en deux clics. Cinéma associatif et indépendant, tarifs pour toutes les bourses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15100E; --panel:#1f1714; --panel-2:#271d18; --line:rgba(255,255,255,.09);
+    --garnet:#9C0000; --crimson:#D11A1A; --crimson-hi:#ec3838; --amber:#F0B429;
+    --cream:#F3E9DA; --muted:#b3a290; --muted-2:#8a7a6c;
+    --cond:'Oswald',Impact,sans-serif; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 26px}
+  h1,h2,h3,h4{font-family:var(--cond);text-transform:uppercase;margin:0;line-height:1.02;font-weight:600}
+  .kick{font-family:var(--cond);text-transform:uppercase;letter-spacing:.26em;color:var(--amber);font-size:.78rem;font-weight:500}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--cond);text-transform:uppercase;
+    letter-spacing:.08em;font-weight:600;font-size:1rem;padding:13px 26px;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:.15s}
+  .btn-red{background:var(--crimson);color:#fff}
+  .btn-red:hover{background:var(--crimson-hi)}
+  .btn-out{border-color:rgba(243,233,218,.35);color:var(--cream)}
+  .btn-out:hover{border-color:var(--cream);background:rgba(243,233,218,.08)}
+
+  /* top utility */
+  .util{background:#0e0a09;color:var(--muted);font-size:.8rem;text-align:center;padding:7px 16px;letter-spacing:.04em}
+  .util b{color:var(--amber);font-weight:600}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(21,16,14,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  header.nav img.logo{height:42px;filter:brightness(0) invert(1)}
+  .nav-links{display:flex;gap:30px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;font-size:1rem}
+  .nav-links a{color:var(--cream);opacity:.82;transition:.15s}
+  .nav-links a:hover{opacity:1;color:var(--amber)}
+  .nav-right{display:flex;align-items:center;gap:18px}
+
+  /* hero featured */
+  .hero{border-bottom:1px solid var(--line);background:
+    radial-gradient(80% 120% at 85% 0%, rgba(156,0,0,.35), transparent 60%), var(--bg)}
+  .hero-grid{display:grid;grid-template-columns:430px 1fr;gap:50px;padding:54px 0 60px;align-items:center}
+  .hero-poster{aspect-ratio:2/3;border-radius:8px;position:relative;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.1);
+    background:linear-gradient(155deg,#8a0f0f,#c0261a 55%,#5e0a0a);display:flex;flex-direction:column;justify-content:space-between;padding:26px;color:#fff}
+  .hero-poster .pm{font-family:var(--cond);letter-spacing:.3em;font-size:.8rem;opacity:.85}
+  .hero-poster .pt{font-family:var(--cond);font-size:2.6rem;line-height:.95;text-transform:uppercase;text-shadow:0 2px 18px rgba(0,0,0,.4)}
+  .hero-poster .pmeta{font-size:.84rem;opacity:.9;letter-spacing:.04em}
+  .badge{position:absolute;top:18px;right:-44px;transform:rotate(45deg);background:var(--amber);color:#1a1208;
+    font-family:var(--cond);font-weight:700;letter-spacing:.12em;font-size:.78rem;padding:7px 56px;text-transform:uppercase}
+  .hero h1{font-size:clamp(2.6rem,5.6vw,4.4rem);font-weight:700;letter-spacing:.01em}
+  .hero .meta-line{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 0;color:var(--muted);font-size:.92rem}
+  .pill{border:1px solid var(--line);border-radius:30px;padding:3px 13px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;color:var(--cream)}
+  .hero p.syn{color:var(--muted);max-width:60ch;margin:18px 0 0;font-size:1.02rem}
+  .today{margin:26px 0 0}
+  .today .lab{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;color:var(--muted-2);font-size:.78rem;margin-bottom:10px}
+  .showrow{display:flex;gap:10px;flex-wrap:wrap}
+  .show{font-family:var(--cond);font-size:1.1rem;letter-spacing:.04em;padding:9px 16px;border-radius:5px;background:var(--panel-2);border:1px solid var(--line);color:var(--cream);transition:.15s}
+  .show:hover{background:var(--crimson);border-color:var(--crimson);color:#fff}
+  .show small{display:block;font-size:.6rem;letter-spacing:.14em;color:var(--amber);font-family:var(--sans);font-weight:600}
+  .show:hover small{color:#fff}
+  .hero .cta-row{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+
+  /* grid section */
+  .grid-sec{padding:64px 0}
+  .grid-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:8px}
+  .grid-head h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:700}
+  .daypills{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 18px}
+  .daypill{font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;font-size:.86rem;
+    padding:8px 14px;border-radius:30px;border:1px solid var(--line);color:var(--muted);cursor:pointer;background:none;transition:.15s}
+  .daypill b{display:block;font-size:1.15rem;color:var(--cream);font-weight:600}
+  .daypill:hover{border-color:var(--muted)}
+  .daypill.active{background:var(--cream);border-color:var(--cream);color:#1a120f}
+  .daypill.active b{color:var(--garnet)}
+
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+  table.grid{border-collapse:collapse;width:100%;min-width:880px}
+  table.grid th,table.grid td{border-bottom:1px solid var(--line);padding:0;text-align:left;vertical-align:middle}
+  table.grid thead th{position:sticky;top:0;background:var(--panel-2);font-family:var(--cond);text-transform:uppercase;
+    letter-spacing:.08em;font-size:.82rem;color:var(--muted);padding:14px 10px;text-align:center;font-weight:500}
+  table.grid thead th span{display:block;font-size:1.15rem;color:var(--cream);font-weight:600}
+  table.grid th.filmcol{position:sticky;left:0;z-index:3;text-align:left;min-width:220px;background:var(--panel-2)}
+  .filmcell{position:sticky;left:0;background:var(--panel);z-index:2;min-width:220px;padding:16px 16px;display:flex;gap:12px;align-items:center}
+  .mini{width:38px;height:56px;border-radius:3px;flex:none}
+  .mini.p1{background:linear-gradient(160deg,#8a0f0f,#c0261a)}
+  .mini.p2{background:linear-gradient(160deg,#243b4a,#0f5566)}
+  .mini.p3{background:linear-gradient(160deg,#6a4a12,#a8822f)}
+  .mini.p4{background:linear-gradient(160deg,#3a2233,#7a2d4d)}
+  .filmcell .fn{font-family:var(--cond);text-transform:uppercase;font-size:1.05rem;line-height:1.05;font-weight:600}
+  .filmcell .fmeta{font-size:.74rem;color:var(--muted-2);letter-spacing:.04em}
+  td.slot{text-align:center;padding:12px 8px}
+  td.slot a{display:inline-block;font-family:var(--cond);font-size:1.02rem;letter-spacing:.03em;
+    padding:7px 12px;border-radius:5px;border:1px solid var(--line);color:var(--cream);transition:.15s;white-space:nowrap}
+  td.slot a:hover{background:var(--crimson);border-color:var(--crimson);color:#fff}
+  td.slot .vtag{display:block;font-size:.58rem;letter-spacing:.14em;color:var(--amber);font-family:var(--sans);font-weight:600;margin-top:3px}
+  td.empty{text-align:center;color:#5a4d44}
+  td.dimmed,th.dimmed{opacity:.32}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;color:var(--muted-2);font-size:.82rem}
+  .legend b{color:var(--amber);font-family:var(--cond);letter-spacing:.08em}
+
+  /* events scroller */
+  .events{padding:10px 0 64px}
+  .ev-scroll{display:grid;grid-auto-flow:column;grid-auto-columns:300px;gap:18px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+  .ev{scroll-snap-align:start;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .ev .top{height:96px;display:flex;align-items:flex-end;padding:14px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;color:#fff}
+  .ev .e1{background:linear-gradient(120deg,#5e0a0a,#9C0000)}
+  .ev .e2{background:linear-gradient(120deg,#0f5566,#243b4a)}
+  .ev .e3{background:linear-gradient(120deg,#6a4a12,#a8822f)}
+  .ev .body{padding:16px 18px 20px}
+  .ev .when{font-family:var(--cond);color:var(--amber);letter-spacing:.08em;font-size:.82rem;text-transform:uppercase}
+  .ev h4{font-size:1.3rem;margin:6px 0 8px}
+  .ev p{color:var(--muted);font-size:.9rem;margin:0}
+
+  /* info strip */
+  .infostrip{background:var(--panel);border-top:1px solid var(--line);padding:54px 0}
+  .info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+  .info h3{font-family:var(--cond);font-size:1.4rem;color:var(--amber);margin-bottom:12px;letter-spacing:.04em}
+  .info p,.info li{color:var(--muted);font-size:.93rem}
+  .info ul{list-style:none;margin:0;padding:0}
+  .info li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line)}
+  .info li b{color:var(--cream);font-family:var(--cond);font-size:1.05rem}
+  .info a.maplink{color:var(--cream);border-bottom:1px solid var(--crimson)}
+
+  /* footer */
+  footer{background:#0e0a09;padding:46px 0 26px;border-top:1px solid var(--line)}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+  footer img.flogo{height:40px;filter:brightness(0) invert(1);opacity:.9}
+  .foot-links{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;font-size:.92rem;color:var(--muted)}
+  .foot-links a:hover{color:var(--amber)}
+  .copy{color:var(--muted-2);font-size:.8rem;margin-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:300px 1fr;gap:32px}
+    .info-grid{grid-template-columns:1fr 1fr;gap:26px}
+  }
+  @media(max-width:680px){
+    .nav-links{display:none}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-poster{max-width:260px}
+    .info-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="util">Cinéma associatif &amp; indépendant · Croix-Rousse, Lyon · <b>Le mardi, toutes les séances à 5,50 €</b></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#"><img class="logo" src="assets/logo.png" alt="Cinéma Saint-Denis"></a>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#grille">Séances</a>
+        <a href="#events">Événements</a>
+        <a href="#infos">Infos</a>
+        <a href="#infos">Tarifs</a>
+      </nav>
+      <a href="#grille" class="btn btn-red">Réserver</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-poster">
+      <div class="badge">Avant-première</div>
+      <div class="pm">ST · DENIS</div>
+      <div><div class="pt">C'est quoi<br>l'amour&nbsp;?</div><div class="pmeta" style="margin-top:10px">France · 1h48 · VF</div></div>
+    </div>
+    <div>
+      <span class="kick">Le film de la semaine</span>
+      <h1>C'est quoi l'amour&nbsp;?</h1>
+      <div class="meta-line">
+        <span class="pill">VF</span><span class="pill">Comédie</span><span>de Claire Vasseur</span><span>·</span><span>France</span><span>·</span><span>1h48</span>
+      </div>
+      <p class="syn">Trois générations d'une même famille tentent, le temps d'un été à la Croix-Rousse, de répondre à la plus simple et la plus impossible des questions. Une comédie tendre et douce-amère, présentée en avant-première en présence de l'équipe.</p>
+      <div class="today">
+        <div class="lab">Prochaines séances</div>
+        <div class="showrow">
+          <a class="show" href="#"><small>AUJ. DIM 15</small> 17h30</a>
+          <a class="show" href="#"><small>MAR 17</small> 20h00</a>
+          <a class="show" href="#"><small>MER 11</small> 18h00</a>
+          <a class="show" href="#"><small>JEU 12</small> 20h30</a>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a href="#" class="btn btn-red">Réserver une place</a>
+        <a href="#" class="btn btn-out">▶ Bande-annonce</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="grid-sec" id="grille">
+  <div class="wrap">
+    <div class="grid-head">
+      <div>
+        <span class="kick">Semaine du 11 au 17 juin 2026</span>
+        <h2>La grille des séances</h2>
+      </div>
+      <a href="#" class="btn btn-out">Semaine suivante →</a>
+    </div>
+
+    <div class="daypills" id="daypills">
+      <button class="daypill active" data-day="0">Tous</button>
+      <button class="daypill" data-day="1">Mer<b>11</b></button>
+      <button class="daypill" data-day="2">Jeu<b>12</b></button>
+      <button class="daypill" data-day="3">Ven<b>13</b></button>
+      <button class="daypill" data-day="4">Sam<b>14</b></button>
+      <button class="daypill" data-day="5">Dim<b>15</b></button>
+      <button class="daypill" data-day="6">Lun<b>16</b></button>
+      <button class="daypill" data-day="7">Mar<b>17</b></button>
+    </div>
+
+    <div class="table-scroll">
+      <table class="grid">
+        <thead>
+          <tr>
+            <th class="filmcol">Film</th>
+            <th data-col="1">Mer <span>11</span></th>
+            <th data-col="2">Jeu <span>12</span></th>
+            <th data-col="3">Ven <span>13</span></th>
+            <th data-col="4">Sam <span>14</span></th>
+            <th data-col="5">Dim <span>15</span></th>
+            <th data-col="6">Lun <span>16</span></th>
+            <th data-col="7">Mar <span>17</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="filmcell"><span class="mini p1"></span><span><span class="fn">C'est quoi l'amour&nbsp;?</span><br><span class="fmeta">VF · 1h48</span></span></div></td>
+            <td class="slot" data-col="1"><a href="#">18h00</a></td>
+            <td class="slot" data-col="2"><a href="#">20h30</a></td>
+            <td class="slot empty" data-col="3">—</td>
+            <td class="slot" data-col="4"><a href="#">16h00</a></td>
+            <td class="slot" data-col="5"><a href="#">17h30</a></td>
+            <td class="slot empty" data-col="6">—</td>
+            <td class="slot" data-col="7"><a href="#">20h00</a></td>
+          </tr>
+          <tr>
+            <td><div class="filmcell"><span class="mini p2"></span><span><span class="fn">Mon grand frère et moi</span><br><span class="fmeta">VOST · 2h07</span></span></div></td>
+            <td class="slot" data-col="1"><a href="#">20h30<span class="vtag">VOST</span></a></td>
+            <td class="slot empty" data-col="2">—</td>
+            <td class="slot" data-col="3"><a href="#">18h00<span class="vtag">VOST</span></a></td>
+            <td class="slot" data-col="4"><a href="#">21h00<span class="vtag">VOST</span></a></td>
+            <td class="slot empty" data-col="5">—</td>
+            <td class="slot" data-col="6"><a href="#">20h00<span class="vtag">VOST</span></a></td>
+            <td class="slot empty" data-col="7">—</td>
+          </tr>
+          <tr>
+            <td><div class="filmcell"><span class="mini p3"></span><span><span class="fn">Vivaldi et moi</span><br><span class="fmeta">VOST · 1h50</span></span></div></td>
+            <td class="slot empty" data-col="1">—</td>
+            <td class="slot" data-col="2"><a href="#">18h00<span class="vtag">VOST</span></a></td>
+            <td class="slot" data-col="3"><a href="#">20h30<span class="vtag">VOST</span></a></td>
+            <td class="slot empty" data-col="4">—</td>
+            <td class="slot" data-col="5"><a href="#">15h00<span class="vtag">VOST</span></a></td>
+            <td class="slot empty" data-col="6">—</td>
+            <td class="slot" data-col="7"><a href="#">18h00<span class="vtag">VOST</span></a></td>
+          </tr>
+          <tr>
+            <td><div class="filmcell"><span class="mini p4"></span><span><span class="fn">Juste une illusion</span><br><span class="fmeta">VF · 2h00</span></span></div></td>
+            <td class="slot" data-col="1"><a href="#">16h00</a></td>
+            <td class="slot empty" data-col="2">—</td>
+            <td class="slot" data-col="3"><a href="#">21h00</a></td>
+            <td class="slot" data-col="4"><a href="#">18h30</a></td>
+            <td class="slot" data-col="5"><a href="#">20h00</a></td>
+            <td class="slot" data-col="6"><a href="#">17h30</a></td>
+            <td class="slot empty" data-col="7">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span><b>VOST</b> version originale sous-titrée · sinon VF</span><span>Cliquez sur un horaire pour réserver</span></div>
+  </div>
+</section>
+
+<section class="events" id="events">
+  <div class="wrap">
+    <div class="grid-head" style="margin-bottom:20px">
+      <div><span class="kick">En plus des séances</span><h2>Rendez-vous &amp; événements</h2></div>
+    </div>
+    <div class="ev-scroll">
+      <div class="ev"><div class="top e1">Ciné-club</div><div class="body"><div class="when">Lun. 16 juin · 20h00</div><h4>« Murmures »</h4><p>Un classique du patrimoine projeté puis débattu avec un invité, au bar.</p></div></div>
+      <div class="ev"><div class="top e2">Jeune public</div><div class="body"><div class="when">Dim. 15 juin · 11h00</div><h4>Ciné-goûter</h4><p>Court programme dès 3 ans, suivi d'un goûter offert par les bénévoles.</p></div></div>
+      <div class="ev"><div class="top e3">Tarif unique</div><div class="body"><div class="when">Mar. 17 juin · toute la journée</div><h4>Les mardis à 5,50 €</h4><p>Toutes les séances au même prix. La soirée idéale pour tenter un film au hasard.</p></div></div>
+      <div class="ev"><div class="top e1">Rencontre</div><div class="body"><div class="when">Jeu. 12 juin · 20h30</div><h4>Échange avec l'équipe</h4><p>Projection suivie d'une discussion en présence de la réalisatrice.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="infostrip" id="infos">
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info">
+        <h3>Le lieu</h3>
+        <p>77 grande rue de la Croix-Rousse<br>69004 Lyon</p>
+        <p>Métro C — arrêt Croix-Rousse (3 min)<br>Bus C13 · C18 · S6 · Vélo'v à 50 m</p>
+        <p><a class="maplink" href="#">Voir sur la carte →</a></p>
+      </div>
+      <div class="info">
+        <h3>Tarifs</h3>
+        <ul>
+          <li>Plein <b>7,50 €</b></li>
+          <li>Réduit <b>6,00 €</b></li>
+          <li>− 14 ans <b>4,50 €</b></li>
+          <li>Mardi <b>5,50 €</b></li>
+          <li>Carte 10 <b>55 €</b></li>
+        </ul>
+      </div>
+      <div class="info">
+        <h3>Parking</h3>
+        <p>Quartier piéton — métro et vélo conseillés.</p>
+        <p><b style="color:var(--cream)">Parking LPA Croix-Rousse</b><br>Place de la Croix-Rousse, à 5 min.</p>
+        <p>Voirie gratuite le dimanche et après 19h.</p>
+      </div>
+      <div class="info">
+        <h3>Le bar</h3>
+        <p>Tenu par les bénévoles, ouvert 1h avant et après les séances.</p>
+        <p>Vins de producteurs, bières artisanales, cafés et douceurs — à prix doux. Chaque verre soutient le cinéma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <img class="flogo" src="assets/logo.png" alt="Cinéma Saint-Denis">
+      <nav class="foot-links">
+        <a href="#grille">Séances</a><a href="#events">Événements</a><a href="#infos">Infos pratiques</a>
+        <a href="#">Notre histoire</a><a href="#">Devenir bénévole</a><a href="https://facebook.com/CinemaSaintDenis">Facebook</a>
+      </nav>
+    </div>
+    <div class="copy">
+      <span>© 2026 Cinéma Saint-Denis · Association loi 1901 · 04 78 39 81 51 · contact@cinema-saint-denis.fr</span>
+      <span>Maquette « Le Programme » · Proposition de refonte</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Day filter: highlight the chosen column, dim the rest. "Tous" resets.
+  const pills = document.querySelectorAll('.daypill');
+  pills.forEach(p => p.addEventListener('click', () => {
+    pills.forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    const day = p.dataset.day;
+    document.querySelectorAll('[data-col]').forEach(c => {
+      const show = day === '0' || c.dataset.col === day;
+      c.classList.toggle('dimmed', !show);
+    });
+  }));
+</script>
+
+</body>
+</html>
