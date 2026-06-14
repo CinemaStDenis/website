@@ -1,8 +1,8 @@
 # Tasks — Cinéma Saint-Denis rebuild
 
 Working backlog for the website redesign + weekly automation. Checkboxes track
-progress; see `specs/Spec questions.md` for the open questions that still gate
-some of these, and `Design notes.md` for the design direction.
+progress; see `specs/spec-questions.md` for the open questions that still gate
+some of these, and `design-notes.md` for the design direction.
 
 _Last updated: 2026-06-14_
 
@@ -36,9 +36,10 @@ _Last updated: 2026-06-14_
 
 - [x] Three homepage design directions as mockups (`designs/`).
 - [x] Local git repo + tailored `.gitignore` + README, pushed to GitHub.
+- [ ] Run `claude init` to generate a `CLAUDE.md` so Claude Code has project context.
 - [ ] Write `docs/specs/Architecture.md` (topology, data flow, decisions, what's still open).
 - [ ] Obtain a **real sample of the weekly Word document** (unblocks most parsing work).
-- [ ] Close remaining spec questions (B, C, D, E, F2, F4) in `specs/Spec questions.md`.
+- [ ] Close remaining spec questions (B, C, D, E, F2, F4) in `specs/spec-questions.md`.
 - [ ] Pick which of the three designs to build (or a hybrid).
 
 ## Phase 1 — Website (Hugo)

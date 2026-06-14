@@ -1,7 +1,7 @@
 # Spec questions — automation pipeline
 
 > Open questions to resolve before writing the detailed spec for the weekly
-> automation described in `Technical requirements.md` (parse the weekly Word doc
+> automation described in `technical-requirements.md` (parse the weekly Word doc
 > → update the website → fetch images/trailers → publish a subscribable calendar
 > → post to social media).
 >
@@ -189,6 +189,22 @@ _Recommended sequencing:_ (1) new site + programme-from-doc → (2) calendar fee
 > **Réponse :**
 
 ---
+
+## G. Ticketing & Publishing
+
+**G1. What vendor is used for online ticketing?**
+
+> **Réponse :**
+
+**G2. Who updates the ticketing system?**
+
+> **Réponse :**
+
+**G3. Does the system have a link to Allo Ciné? **
+
+Yes, via the ticketing system
+
+> **Réponse :**
 
 ## Most valuable next input
 

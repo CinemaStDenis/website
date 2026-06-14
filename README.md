@@ -18,8 +18,8 @@ Early planning and design exploration.
   - `3-salon.html` — refined community hub (Comœdia-style)
   - `assets/logo.png` — original logo; brand garnet `#9C0000` was sampled from it
 - **`docs/`** — planning & design documents:
-  - `specs/Design brief.md`, `specs/Technical requirements.md`, `specs/Spec questions.md`
-  - `Design notes.md`
+  - `specs/design-brief.md`, `specs/technical-requirements.md`, `specs/spec-questions.md`
+  - `design-notes.md`
 
 ## Planned stack
 

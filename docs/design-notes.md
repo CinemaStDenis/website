@@ -174,7 +174,7 @@ Preview gallery: `designs/index.html`.
 
 ---
 
-## 8. Technical / future notes (from `Technical requirements.md`)
+## 8. Technical / future notes (from `technical-requirements.md`)
 
 Out of scope for these mockups, but the design should anticipate:
 - A weekly **Word document** of film blurbs → parsed to update the site.
